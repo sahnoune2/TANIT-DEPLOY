@@ -91,6 +91,8 @@ exports.signUp = async (req, res) => {
       res.cookie("token", token, {
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 24 * 7,
+        secure: true,
+        sameSite: "None",
       });
 
       await codes.deleteOne({ code: codeFound.code });
@@ -116,6 +118,8 @@ exports.signUp = async (req, res) => {
       res.cookie("token", token, {
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 24 * 7,
+        secure: true,
+        sameSite: "None",
       });
 
       await codes.deleteOne({ code: codeFound.code });
@@ -156,6 +160,8 @@ exports.signIn = async (req, res) => {
         res.cookie("token", token, {
           httpOnly: true,
           maxAge: 1000 * 60 * 60 * 24 * 7,
+          secure: true,
+          sameSite: "None",
         });
         res.status(200).send({ msg: "welcome in mr user ", userFound });
       }
@@ -177,6 +183,8 @@ exports.signIn = async (req, res) => {
         res.cookie("token", token, {
           httpOnly: true,
           maxAge: 1000 * 60 * 60 * 24 * 7,
+          secure: true,
+          sameSite: "None",
         });
         res.status(200).send({ msg: "welcome in mr user ", userFound });
       }
