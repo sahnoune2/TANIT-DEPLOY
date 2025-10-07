@@ -226,7 +226,11 @@ exports.getCurrent = async (req, res) => {
 
 exports.logOut = async (req, res) => {
   try {
-    res.clearCookie("token", { httpOnly: true, secure: true });
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+    });
     res.status(200).send({ msg: "cookies deleted successfully" });
   } catch (error) {
     res.status(500).send({
