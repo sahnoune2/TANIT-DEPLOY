@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 module.exports = async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://krimiseif140:krimiseif140@cluster0.nk16i.mongodb.net/TanitJobs"
+      "mongodb+srv://krimiseif140:krimiseif140@cluster0.nk16i.mongodb.net/TanitJobs?retryWrites=true&w=majority&appName=Cluster0"
     );
     console.log("database is connected ");
   } catch (error) {
