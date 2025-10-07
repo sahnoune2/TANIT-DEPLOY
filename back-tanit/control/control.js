@@ -5,6 +5,8 @@ const nodemailer = require("nodemailer");
 const codes = require("../schema/codeSchema");
 const companies = require("../schema/companySchema");
 const jobs = require("../schema/jobSchema");
+const sgMail = require("@sendgrid/mail");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const randomCode = () => {
   return Math.random().toString(36).substring(2, 8);
@@ -27,8 +29,22 @@ exports.emailValidation = async (req, res) => {
     if (userFound || companyFound) {
       res.status(400).send({ msg: "user already exists" });
     } else {
-      const code = 1111;
+      const code = randomCode();
 
+      const msg = {
+        to: email,
+        from: "animea1993@gmail.com", // Verified sender
+        replyTo: "noreply@tunesphere.com",
+        subject: "Please Verify Your Account",
+        html: `
+                  <h1>welcome to our website</h1>
+                  <p>please click the link to verify your account</p>
+                  <span>${code}</span>
+                  
+                  `,
+      };
+
+      await sgMail.send(msg);
       const mailOptions = {
         to: email,
         html: `
