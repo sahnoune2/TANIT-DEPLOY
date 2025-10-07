@@ -44,6 +44,10 @@ export const Code = () => {
       <div></div>
 
       <button onClick={handleCode}>submit</button>
+      <h2 style={{ color: "red", marginTop: "20px" }}>
+        USED '1111' AS A PLACEHOLDER CODE DUE TO SMTP/EMAIL SENDING ISSUES, TO
+        BYPASS VERIFICATION AND TEST FRONTEND–BACKEND INTEGRATION QUICKLY.
+      </h2>
     </div>
   );
 };
